@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+body {
+    font-family: 'Dancing Script', cursive;
+    background-color: #4a001f; /* Темно-бордовый фон */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px;
+    background: none;
+}
+
+h1 {
+    font-size: 48px;
+    color: gold;
+    font-weight: bold;
+}
+
+.block {
+    background-color: #ffb6c1; /* Светло-розовые блоки */
+    color: #4a001f; /* Темно-бордовый текст */
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    border: 5px solid gold;
+    box-shadow: 0 0 15px gold;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 3s ease-out, transform 3s ease-out;
+    font-size: 24px;
+}
+
+.block h2 {
+    color: #4a001f; /* Темно-бордовый цвет заголовков */
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+.block::before, .block::after {
+    content: '';
+    display: block;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, gold, transparent);
+    position: absolute;
+    left: 0;
+}
+
+.block::before { top: 0; }
+.block::after { bottom: 0; }
+
+/* Активный класс для плавного появления */
+.block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Эффект распада (60 секунд) */
+@keyframes disappear {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1.2) translateY(20px); }
+}
+
+.disappearing {
+    animation: disappear 60s forwards;
+}
